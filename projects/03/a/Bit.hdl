@@ -14,5 +14,8 @@ CHIP Bit {
     OUT out;
 
     PARTS:
-    Mux (a=in[t-1], b=out[t-1], sel=load[t-1], out=out)
+    // by default prefer to read
+    Mux (a=out1, b=in, sel=load, out=Muxout);
+    DFF (in=Muxout, out=out, out=out1);
+
 }
